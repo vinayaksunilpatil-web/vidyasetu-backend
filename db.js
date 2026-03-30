@@ -1,10 +1,11 @@
 const mysql = require('mysql2/promise');
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'vidyasetu',
+  host: "hopper.proxy.rlwy.net",   // Railway host
+  user: "root",                    // Railway user
+  password: "OHOIgFHLdciPvotdspPPOkekhZSgELZv",       // 🔴 replace this
+  database: "railway",             // Railway DB name
+  port: 40808,                     // Railway port
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
