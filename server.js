@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../frontend')));
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'vidyasetu_secret',
@@ -31,15 +31,10 @@ app.use('/api/donation', donationRoutes);
 app.use('/api/expense', expenseRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'login.html')));
-app.get('/login', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'login.html')));
-app.get('/signup', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'signup.html')));
-app.get('/verify-otp', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'verify_otp.html')));
-app.get('/donor-dashboard', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'donor_dashboard.html')));
-app.get('/ngo-dashboard', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'dashboard.html')));
-app.get('/donate', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'donate.html')));
-app.get('/forgot-password', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'forgot_password.html')));
-app.get('/reset-password', (req, res) => res.sendFile(path.join(__dirname, '../frontend', 'reset_password.html')));
+app.get("/", (req, res) => {
+  res.send("Backend running ✅");
+});
+
 app.post('/api/chat', async (req, res) => {
   const { message } = req.body;
   if (!message) return res.json({ success: false, reply: 'No message received.' });
